@@ -1,13 +1,14 @@
-public class Boots {
-    private int size;
+public class Boots extends Product {
+    private Integer size;
     private boolean isNaturalSkin;
 
-    public Boots(int size, boolean isNaturalSkin) {
+    public Boots(Long id, String productName, Float price, Float weight, String color, Integer productCount, Integer size, boolean isNaturalSkin) {
+        super(id, productName, price, weight, color, productCount);
         this.size = size;
         this.isNaturalSkin = isNaturalSkin;
     }
 
-    public int getSize() {
+    public Integer getSize() {
         return size;
     }
 
