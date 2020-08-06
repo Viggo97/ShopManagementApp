@@ -1,3 +1,5 @@
+package entity;
+
 public class User {
     private Long id;
     private String login;
@@ -21,4 +23,12 @@ public class User {
         return password;
     }
 
+    @Override
+    public String toString() {
+        return "entity.User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

@@ -1,3 +1,5 @@
+package entity;
+
 public class Boots extends Product {
     private Integer size;
     private boolean isNaturalSkin;
@@ -14,5 +16,13 @@ public class Boots extends Product {
 
     public boolean isNaturalSkin() {
         return isNaturalSkin;
+    }
+
+    @Override
+    public String toString() {
+        return "entity.Boots{" +
+                "size=" + size +
+                ", isNaturalSkin=" + isNaturalSkin +
+                '}';
     }
 }

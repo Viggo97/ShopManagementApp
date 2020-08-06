@@ -1,3 +1,5 @@
+package entity;
+
 public class Product {
     private Long id;
     private String productName;
@@ -45,5 +47,17 @@ public class Product {
 
     public void setProductCount(Integer productCount) {
         this.productCount = productCount;
+    }
+
+    @Override
+    public String toString() {
+        return "entity.Product{" +
+                "id=" + id +
+                ", productName='" + productName + '\'' +
+                ", price=" + price +
+                ", weight=" + weight +
+                ", color='" + color + '\'' +
+                ", productCount=" + productCount +
+                '}';
     }
 }
