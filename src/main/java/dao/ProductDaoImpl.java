@@ -40,22 +40,14 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void removeProductById(Long productId) throws IOException {
         List<Product> products = getAllProducts();
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getId().equals(productId)) {
-                products.remove(i);
-            }
-        }
+        products.removeIf(product -> product.getId().equals(productId));
         saveAllProducts(products);
     }
 
     @Override
     public void removeProductByName(String productName) throws IOException {
         List<Product> products = getAllProducts();
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getProductName().equals(productName)) {
-                products.remove(i);
-            }
-        }
+        products.removeIf(product -> product.getProductName().equals(productName));
         saveAllProducts(products);
     }
 

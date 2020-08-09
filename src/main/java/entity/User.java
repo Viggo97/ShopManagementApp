@@ -1,6 +1,7 @@
 package entity;
 
 public class User {
+    public static final String PRODUCT_SEPARATOR = "#";
     private Long id;
     private String login;
     private String password;
@@ -25,10 +26,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "entity.User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return  id + PRODUCT_SEPARATOR + login + PRODUCT_SEPARATOR + password;
     }
 }
