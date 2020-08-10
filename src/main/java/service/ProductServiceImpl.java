@@ -4,6 +4,7 @@ import api.ProductDao;
 import api.ProductService;
 import dao.ProductDaoImpl;
 import entity.Product;
+import validator.ProductValidator;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,7 +12,8 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     private static ProductServiceImpl instance = null;
-    private ProductDao productDao = new ProductDaoImpl("product.data", "PRODUCT");
+    private final ProductDao productDao = ProductDaoImpl.getInstance();
+    private final ProductValidator productValidator = ProductValidator.getInstance();
 
     public ProductServiceImpl() throws IOException {
     }
@@ -35,7 +37,26 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProductByProductName(String productName) throws IOException{
-        return productDao.getProductByProductName(productName);
+        List<Product> products = getAllProducts();
+
+        for (Product product : products) {
+            if (product.getProductName().equals(productName)) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Product getProductById(Long productId) throws IOException{
+        List<Product> products = getAllProducts();
+
+        for (Product product : products) {
+            if (product.getId().equals(productId)) {
+                return product;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -57,7 +78,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = null;
 
         try {
-            product = productDao.getProductByProductName(productName);
+            product = getProductByProductName(productName);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,10 +90,26 @@ public class ProductServiceImpl implements ProductService {
         Product product = null;
 
         try {
-            product = productDao.getProductById(productId);
+            product = getProductById(productId);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return false;
     }
+
+    @Override
+    public boolean saveProduct(Product product) {
+        try {
+            if (productValidator.isValidate(product)) {
+                productDao.saveProduct(product);
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+
+    }
+
+
 }

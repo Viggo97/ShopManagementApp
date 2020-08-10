@@ -75,26 +75,4 @@ public class UserDaoImpl implements UserDao {
 
         return users;
     }
-
-    @Override
-    public User gerUserByLogin(String userLogin) throws IOException {
-        List<User> users = getAllUser();
-        for (User user : users) {
-            if (user.getLogin().equals(userLogin)) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public User getUserById(Long userId) throws IOException {
-        List<User> users = getAllUser();
-        for (User user : users) {
-            if (user.getId().equals(userId)) {
-                return user;
-            }
-        }
-        return null;
-    }
 }

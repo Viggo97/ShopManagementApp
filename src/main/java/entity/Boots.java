@@ -1,6 +1,7 @@
 package entity;
 
 public class Boots extends Product {
+    public static final char PRODUCT_TYPE = 'B';
     private Integer size;
     private boolean isNaturalSkin;
 
@@ -20,6 +21,6 @@ public class Boots extends Product {
 
     @Override
     public String toString() {
-        return super.toString() + PRODUCT_SEPARATOR + size + PRODUCT_SEPARATOR + isNaturalSkin;
+        return PRODUCT_TYPE + PRODUCT_SEPARATOR + getBasicProductString() + PRODUCT_SEPARATOR + size + PRODUCT_SEPARATOR + isNaturalSkin;
     }
 }
