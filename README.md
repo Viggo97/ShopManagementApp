@@ -11,6 +11,7 @@ To-do list:
 * creating a separate database (e.g. MySQL)
 * building a graphical interface
 * displaying information about users
+
 # Technologies
 
 Project is created with Java 8. The project uses elements such as OOP, exceptions, enums, saving and reading data from a file (by parsers), design patterns (Singleton, Facade).
